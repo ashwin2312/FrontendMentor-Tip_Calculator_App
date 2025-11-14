@@ -1,0 +1,177 @@
+
+$primary-color: hsl(172, 67%, 45%);
+$green-900: hsl(183, 100%, 15%);
+$green-500: hsl(186, 14%, 43%);
+$green-400: hsl(184, 14%, 56%);
+$green-200: hsl(185, 41%, 84%);
+$green-50: hsl(189, 47%, 97%);
+
+@mixin button($theme: $green-900){
+    background-color: $theme;
+    color: $green-50;
+    padding: 0.5rem 1.2rem;
+    text-align: center;
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    &:hover{
+        background-color: $primary-color;
+        color: $green-900;
+    }
+}
+
+
+
+body{
+    height: 100vh;
+    font-family: "Space Mono", monospace;
+    background-color: $green-200;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+// ___________Styling for currency symbol__________
+/* CSS */
+.currency-input {
+  position: relative;
+  display: block;
+  width: 260px;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.currency-input input {
+  padding-left: 25px; /* space for the $ symbol */
+  height: 30px;
+  font-size: 16px;
+  width: 100%;
+}
+
+
+
+// _____________End___________
+
+
+.main{
+    width: 320px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: white;
+    border: none;
+}
+
+
+.input-section{
+    padding: 1rem;  
+
+    input{
+        background-color: $green-50;
+        border: none;
+        outline: none;
+
+        &:focus{
+            border: 2px solid $primary-color;
+            // outline: none;
+        }
+    }
+    .bill-input, .select-tip, .people-input{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        
+        label{
+            color: $green-400;
+        }
+    }
+    .select-tip{        
+        margin: 1rem 0 1rem 0;
+    }
+    .buttons{
+        width: auto;
+        height: auto;
+        // border: 1px solid green;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(3, auto);
+        gap: 0.5rem;
+        button{
+            @include button();            
+        }
+        #custom-btn{
+            background-color: $green-50;
+            color: $green-500;
+
+            &:hover{
+                border: 2px solid $primary-color;
+            }
+        }
+    }
+    
+}
+.result-section{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: hsl(183, 100%, 15%);
+    border-radius: 1rem;
+    color: $green-50;
+    font-weight: 700;
+
+    .person{
+        font-weight: lighter;
+        color: $green-400;
+    }
+    .result{
+        color: $primary-color;
+    }
+
+    .amount, .total{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // margin: 1rem 0;
+    }
+
+    .text-result{
+        line-height: 0.5rem;
+    }
+
+    .reset-btn{
+        width: 100%;
+        @include button($theme: $primary-color);
+        color: $green-900;
+        margin-top: 1rem;
+    }
+}
+
+
+@media (min-width:800px) {
+    .main{
+        width: fit-content;
+        flex-direction: row;
+        gap: 6rem;
+    }
+    .result-section{
+        width: 300px;
+        // justify-content: space-evenly;
+        
+        .reset-btn{
+            margin-top: 8rem;
+        }
+    }
+}
