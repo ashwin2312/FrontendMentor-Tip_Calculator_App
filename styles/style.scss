@@ -110,6 +110,8 @@ body{
         grid-template-rows: repeat(3, auto);
         gap: 0.5rem;
         button{
+            width: auto;
+            height: auto;
             @include button();            
         }
         #custom-btn{
@@ -165,6 +167,14 @@ body{
         width: fit-content;
         flex-direction: row;
         gap: 6rem;
+    }
+    .input-section{
+        .buttons{
+            width: 300px;
+            // border: 1px solid green;
+            grid-template-columns: repeat(3, auto);
+            grid-template-rows: repeat(2, auto);
+        }
     }
     .result-section{
         width: 300px;
